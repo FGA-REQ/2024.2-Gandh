@@ -1,9 +1,26 @@
-site_name: Documentação
+repo_url: https://github.com/FGA-REQ/2024.2-Gandh
+repo_name: 2024.2 - Gandh
+
+site_name: Gandh - Paraíba HotDog Web
 
 nav:
-  - Instruções mkdocs: "index.md"
-  - Atas de Reunião:
-    - Ata 1: "atas-reuniao/ata-reuniao-1.md"
+  - Sobre o Projeto: "index.md"
+  - Visão do Produto: "visao-produto/visao-produto.md"
+  - Regras de Negócio: "regras-negocio/regras-negocio.md"
 
 theme:
   name: material
+  features:
+      - navigation.tabs
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Dark mode
+      primary: grey
+    
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Light mode
+      primary: grey
