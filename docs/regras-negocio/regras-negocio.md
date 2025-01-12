@@ -2,6 +2,7 @@
 | Versão | Data | Descrição da Alteração | Nome(s) Integrante(s) |
 | ---- | -- | -------------------- | ------------------- |
 | `1.0` | 11/12/2024 | Definição inicial das regras de negócio do produto | [Aline Melo](https://github.com/aline-melo), [André Maia](https://github.com/andre-maia51), [Daniel Ferreira](https://github.com/DanielFsR),[Gabriel Monteiro](https://github.com/GabrielSMonteiro), [Hauedy Wegener](https://github.com/HauedyWS) e [Natália Rodrigues](https://github.com/Natyrodrigues) |
+| `1.1` | 12/01/2025 | Alteração nas regras nº 17 e 18 | [André Maia](https://github.com/andre-maia51) |
 
 # Regras de Negócio
 As regras de negócio são diretrizes que orientam o comportamento de um software e são primordiais para que ele funcione de acordo com as necessidades do negócio. 
@@ -24,5 +25,5 @@ As regras de negócio são diretrizes que orientam o comportamento de um softwar
 | **Rnº14** | O raio de distância de entrega dependerá do CEP do Usuário |
 | **Rnº15** | O Cliente terá uma aba de controle de pedidos |
 | **Rnº16** | O Cliente editará promoções |
-| **Rnº17** | O Sistema terá controle de segurança nos preços dos itens |
-| **Rnº18** | O Sistema terá uma aba de edição dos pedidos e promoções editadas pelo administrador |
+| **Rnº17** | O Sistema terá controle de segurança na edição dos itens |
+| **Rnº18** | O Sistema terá uma aba de edição do cardápio |
