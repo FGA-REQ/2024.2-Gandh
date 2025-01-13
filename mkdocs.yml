@@ -7,7 +7,7 @@ nav:
   - Sobre o Projeto: "index.md"
   - Visão do Produto: "visao-produto/visao-produto.md"
   - Regras de Negócio: "regras-negocio/regras-negocio.md"
-  - Atas de Reunião: "atas-reunião/atas.md"
+  - Atas de Reunião: "atas-reuniao/atas.md"
 
 theme:
   name: material
