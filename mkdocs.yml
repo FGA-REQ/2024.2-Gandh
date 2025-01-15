@@ -10,6 +10,7 @@ nav:
       - Visão do Produto: "visao-produto/visao-produto.md"
       - Requisitos: "doc-requisitos/requisitos.md"
       - Backlog: "backlog/backlog.md"
+      - Processo de Desenvolvimento de Software: "BPMN/BPMN.md"
   - Atas de Reunião: 
       - 12/01: "atas-reuniao/atas.md"
 
