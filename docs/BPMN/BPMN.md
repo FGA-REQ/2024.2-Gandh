@@ -10,7 +10,6 @@ Para a elaboração do Documento de Processo de Desenvolvimento de Software, uti
 Além disso, o BPMN atua como uma linguagem universal que facilita a identificação de papéis e responsabilidades, eventos relevantes, e oportunidades de melhoria nos processos, promovendo maior eficiência e comunicação entre as partes envolvidas.
 
 ## Diagrama BPMN do Paraíba HotDog Web:
-![Imagem do diagrama do processo de desenvolvimento de software do Paraíba HotDog Web](../assets/BPMN%20-%20Paraíba%20HotDog.png)
-_Figura 1: Diagrama de Processo de Desenvolvimento de Software do Paraíba HotDog Web._
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/board/t05vL2jWB8HQyIP6OPUR2s/BPMN---Para%C3%ADba-HotDog?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
 
