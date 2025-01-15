@@ -1,3 +1,8 @@
+## Histórico de Versões
+| Versão | Data | Descrição da Alteração | Nome(s) Integrante(s) |
+| ---- | -- | -------------------- | ------------------- |
+| `1.0` | 15/01/2025 | Adicionada ata da reunião ocorrida dia 14/01/2025 | [Gabriel Monteiro](https://github.com/GabrielSMonteiro) |
+
 ## 14 DE JANEIRO, 20:00
 
 **TEMAS DA REUNIÃO:**
