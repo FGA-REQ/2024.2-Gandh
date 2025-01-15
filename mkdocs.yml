@@ -8,7 +8,8 @@ nav:
   - Visão do Produto: "visao-produto/visao-produto.md"
   - Gestão do Projeto:
       - Regras de Negócio: "regras-negocio/regras-negocio.md"
-      - Atas de Reunião: "atas-reuniao/atas.md"
+  - Atas de Reunião: 
+      - 12/01: "atas-reuniao/atas.md"
 
 theme:
   name: material
