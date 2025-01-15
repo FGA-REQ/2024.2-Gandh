@@ -5,9 +5,9 @@ site_name: Gandh - Paraíba HotDog Web
 
 nav:
   - Sobre o Projeto: "index.md"
-  - Visão do Produto: "visao-produto/visao-produto.md"
   - Gestão do Projeto:
       - Regras de Negócio: "regras-negocio/regras-negocio.md"
+      - Visão do Produto: "visao-produto/visao-produto.md"
   - Atas de Reunião: 
       - 12/01: "atas-reuniao/atas.md"
 
