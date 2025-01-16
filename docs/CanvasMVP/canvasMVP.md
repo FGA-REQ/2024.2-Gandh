@@ -17,13 +17,5 @@ Durante a última dinâmica do Lean Inception, este artefato foi desenvolvido ba
 
 O resultado deste processo é o Canvas MVP apresentado a seguir, que representa a visão unificada da equipe sobre o caminho a ser seguido no desenvolvimento do Paraíba HotDog Web.
 
-<div style="text-align: center;">
-    <figure>
-<<<<<<< HEAD
-        <img src="/assets/canvasMVP.png" alt="CanvasMVP" width="800">
-=======
-        <img src="../assets/canvasMVP.png" alt="CanvasMVP" width="800">
->>>>>>> 4eadee5442fe7d66c8ccd6a0eb2e8eb208116b81
-        <p align="center"><b>Autor:</b> <a href="https://github.com/GabrielSMonteiro">Gabriel Monteiro</a></p>
-    </figure>
-</div>
+## Canvas MVP do Paraíba HotDog:
+<img src="/assets/canvasMVP.png" alt="Canvas MVP do Paraíba HotDog" style="border: 1px solid rgba(0, 0, 0, 0.1); width: 900px; height: 550px;">
