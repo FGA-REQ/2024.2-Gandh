@@ -19,7 +19,11 @@ O resultado deste processo é o Canvas MVP apresentado a seguir, que representa 
 
 <div style="text-align: center;">
     <figure>
+<<<<<<< HEAD
         <img src="/assets/canvasMVP.png" alt="CanvasMVP" width="800">
+=======
+        <img src="../assets/canvasMVP.png" alt="CanvasMVP" width="800">
+>>>>>>> 4eadee5442fe7d66c8ccd6a0eb2e8eb208116b81
         <p align="center"><b>Autor:</b> <a href="https://github.com/GabrielSMonteiro">Gabriel Monteiro</a></p>
     </figure>
 </div>
