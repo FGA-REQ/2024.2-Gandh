@@ -16,7 +16,7 @@
 
 - Aline Melo - 211031557
 - André Maia - 222037648
-- Daniel Ferreira - 221087875
+- Daniel Ferreira - 222006632
 - Gabriel Monteiro - 221021975
 - Hauedy Wegener - 211030792
 - Natália Rodrigues - 221037975
