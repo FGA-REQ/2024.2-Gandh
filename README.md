@@ -49,3 +49,37 @@ O projeto Paraíba HotDog Web consiste no desenvolvimento de uma aplicação web
   </tr>
 </table>
 </center>
+
+## Guia do Banco de Dados
+
+Para rodar o banco de dados, você precisará ter o **PostgreSQL** e o **Docker** instalados em sua máquina.
+
+### Passos para Configuração e Uso:
+
+1. **Navegue até o diretório do projeto**:
+   ```bash
+    cd 2024.2-Gandh
+
+2. **Suba o banco de dados localmente com o Docker**:
+   ```bash
+    docker-compose up -d
+
+3. **Acesse o banco de dados no terminal**:
+   ```bash
+   docker exec -it postgres_local psql -U paraibahotdog -d paraibahd_db
+
+### Atualizações do Banco de Dados
+
+Quando forem feitas modificações no banco de dados, siga os seguintes passos:
+
+1. **Navegue até o diretório do projeto**:
+    ```bash
+    docker-compose down
+
+2. **Atualize seu repositório local**:
+   ```bash
+   git pull
+
+3. **Após isso, basta executar os comandos iniciais novamente para configurar o banco de dados localmente.**
+
+---
