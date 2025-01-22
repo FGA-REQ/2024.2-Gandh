@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION create_user(
+CREATE OR REPLACE FUNCTION create_client(
     p_name VARCHAR,
     p_gmail VARCHAR,
     p_phone VARCHAR,
@@ -7,7 +7,7 @@ CREATE OR REPLACE FUNCTION create_user(
 )
 RETURNS VOID AS $$
 BEGIN
-    INSERT INTO "user" (name, gmail, phone, address, password)
+    INSERT INTO client (name, gmail, phone, address, password)
     VALUES (p_name, p_gmail, p_phone, p_address, p_password);
 END;
 $$ LANGUAGE plpgsql;
@@ -23,7 +23,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER prevent_fidelity_update
-BEFORE UPDATE ON "user"
+BEFORE UPDATE ON client
 FOR EACH ROW
 WHEN (OLD.fidelity IS DISTINCT FROM NEW.fidelity)
 EXECUTE FUNCTION block_fidelity_update();

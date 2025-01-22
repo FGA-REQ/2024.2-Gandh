@@ -1,4 +1,4 @@
-CREATE TABLE "user" (
+CREATE TABLE client (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     gmail VARCHAR(100) NOT NULL UNIQUE,
