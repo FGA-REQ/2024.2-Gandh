@@ -1,11 +1,12 @@
 CREATE TABLE "user" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    gmail VARCHAR(100) NOT NULL,
+    gmail VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(15) NOT NULL,   
     address VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    fidelity INTEGER
+    fidelity INTEGER DEFAULT 0,
+    is_verified BOOLEAN DEFAULT,
 );
 
 CREATE TABLE admin (
@@ -16,4 +17,5 @@ CREATE TABLE admin (
 );
 
 INSERT INTO admin (name, gmail, password) VALUES
-('unidade1', 'unidade1@gmail.com', '1234');
+('unidade1', 'unidade1@gmail.com', '1234'),
+('unidade2', 'unidade2@gmail.com', '1234');
