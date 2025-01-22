@@ -56,15 +56,17 @@ Para rodar o banco de dados, você precisará ter o **PostgreSQL** e o **Docker*
 
 ### Passos para Configuração e Uso:
 
-1. **Navegue até o diretório do projeto**:
+1. **Crie um arquivo .env na raiz do projeto com o conteúdo compartilhado no privado**
+
+2. **Navegue até o diretório do projeto**:
    ```bash
     cd 2024.2-Gandh
 
-2. **Suba o banco de dados localmente com o Docker**:
+4. **Suba o banco de dados localmente com o Docker**:
    ```bash
     docker-compose up -d
 
-3. **Acesse o banco de dados no terminal**:
+5. **Acesse o banco de dados no terminal**:
    ```bash
    docker exec -it postgres_local psql -U paraibahotdog -d paraibahd_db
 
