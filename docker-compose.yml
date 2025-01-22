@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_local
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "8081:8081"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/scripts:/docker-entrypoint-initdb.d
+volumes:
+  postgres_data:
