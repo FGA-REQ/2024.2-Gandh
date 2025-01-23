@@ -1,4 +1,4 @@
-CREATE TABLE client (
+CREATE TABLE IF NOT EXISTS client (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     gmail VARCHAR(100) NOT NULL UNIQUE,
@@ -6,13 +6,13 @@ CREATE TABLE client (
     address VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     fidelity INTEGER DEFAULT 0,
-    is_verified BOOLEAN DEFAULT,
+    is_verified BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE admin (
+CREATE TABLE IF NOT EXISTS admin (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    gmail VARCHAR(100) NOT NULL,
+    gmail VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL
 );
 
