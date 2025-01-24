@@ -31,4 +31,9 @@ export class ClientRepository {
       hashedPassword,
     ]);
   }
+
+  async findOneByEmail(gmail: string) {
+    const result = await client.query('SELECT * FROM client WHERE gmail = $1', [gmail]);
+    return result.rows[0];
+  }
 }
