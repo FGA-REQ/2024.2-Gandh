@@ -12,11 +12,15 @@ export class AuthController {
     @Post('login')
     async realizarLogIn(@Body() body: {gmail: string; password: string}) {
       try {
+        
         const client = await this.clientService.checkLogIn(body);
-        // const token = 
-        return HttpStatus.CREATED;
+        const token = await this.authService.generateTokenJWT(client)
+        return {statusCode: HttpStatus.OK, message: 'Login realizado com êxito!', token};
+
       } catch (error) { 
+
         throw new HttpException(error.message, HttpStatus.UNAUTHORIZED);
+
       }
     }
 }
