@@ -2,7 +2,7 @@
   "name": "api_paraiba-hot-dog",
   "version": "0.0.1",
   "description": "",
-  "type":  "commonjs",
+  "type": "commonjs",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
     "@nestjs/platform-express": "^11.0.1",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
