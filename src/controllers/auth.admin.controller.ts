@@ -13,7 +13,7 @@ export class AuthAdminController {
     ) {}
 
     // Define um endpoint POST na rota '/auth/login'
-    @Post('login')
+    @Post('login-admin')
     async realizarLogIn(@Body() body: {gmail: string; password: string}) {
       try {
         // Verifica as credenciais do administrador
