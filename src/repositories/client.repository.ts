@@ -23,13 +23,14 @@ export class ClientRepository {
     password: string;
   }) {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await client.query('INSERT INTO client (name, gmail, phone, address, password) VALUES ($1, $2, $3, $4, $5)', [
+    await client.query(
+      'INSERT INTO client (name, gmail, phone, address, password) VALUES ($1, $2, $3, $4, $5)',
       name,
       gmail,
       phone,
       address,
       hashedPassword,
-    ]);
+    );
   }
 
   async findOneByEmail(gmail: string) {

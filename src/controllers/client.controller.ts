@@ -20,7 +20,7 @@ export class ClientController {
       await this.clientService.create(body);
       return { message: 'Cliente criado com sucesso' };
     } catch (error) {
-      throw new HttpException('Erro ao criar cliente', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException(error.message , HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
