@@ -27,3 +27,17 @@ BEFORE UPDATE ON client
 FOR EACH ROW
 WHEN (OLD.fidelity IS DISTINCT FROM NEW.fidelity)
 EXECUTE FUNCTION block_fidelity_update();
+
+CREATE OR REPLACE FUNCTION create_menu_for_admin()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO menu (name)
+    VALUES (NEW.name);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER create_menu_trigger
+AFTER INSERT ON admin
+FOR EACH ROW
+EXECUTE FUNCTION create_menu_for_admin();
