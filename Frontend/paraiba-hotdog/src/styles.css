@@ -1,0 +1,101 @@
+body {
+  background-color: #d2b48c; /* Cor caqui */
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.titulo-ondulado {
+  font-size: 24px;
+  color: #8b4513; /* Marrom escuro */
+  animation: onda 3s infinite;
+}
+
+@keyframes onda {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  background-color: #8b4513;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #a0522d;
+}
+
+/* Estilos do formulário (mantidos do exemplo anterior) */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #8b4513; /* Marrom escuro */
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #8b4513;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.forca-senha {
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.fraca {
+  background-color: red;
+}
+
+.media {
+  background-color: yellow;
+}
+
+.forte {
+  background-color: green;
+}
+
+.mensagem-forca {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.mensagem-erro {
+  color: red;
+  font-size: 12px;
+}
