@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS client (
     name VARCHAR(100) NOT NULL,
     gmail VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(15) NOT NULL,   
-    address VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     fidelity INTEGER DEFAULT 0,
     is_verified BOOLEAN DEFAULT FALSE
@@ -59,4 +58,18 @@ CREATE TABLE item_c (
     description TEXT,
     status BOOLEAN NOT NULL DEFAULT TRUE,
     photo TEXT
+);
+
+CREATE TABLE IF NOT EXISTS cart (
+    id_cart SERIAL PRIMARY KEY,
+    client_id INT UNIQUE NOT NULL REFERENCES client(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS cart_item (
+    id_cart_item SERIAL PRIMARY KEY,
+    cart_id INT NOT NULL REFERENCES cart(id_cart) ON DELETE CASCADE,
+    item_id INT NOT NULL REFERENCES item(id_i) ON DELETE CASCADE,
+    quantity INT DEFAULT 1,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

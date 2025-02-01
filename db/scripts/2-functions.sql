@@ -55,3 +55,32 @@ BEGIN
     ALTER TABLE client ENABLE TRIGGER prevent_fidelity_update;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION create_cart_for_client()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO cart (client_id) VALUES (NEW.id);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER create_cart_trigger
+AFTER INSERT ON client
+FOR EACH ROW
+EXECUTE FUNCTION create_cart_for_client();
+
+CREATE OR REPLACE FUNCTION get_cart_total(p_cart_id INT)
+RETURNS NUMERIC AS $$
+DECLARE
+    total NUMERIC;
+BEGIN
+    SELECT COALESCE(SUM( COALESCE(i.new_price, i.price) * ci.quantity ), 0)
+      INTO total
+      FROM cart_item ci
+      JOIN item i ON ci.item_id = i.id_i
+     WHERE ci.cart_id = p_cart_id;
+     
+    RETURN total;
+END;
+$$ LANGUAGE plpgsql;
+
