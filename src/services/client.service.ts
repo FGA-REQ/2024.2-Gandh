@@ -4,6 +4,9 @@ import * as bcrypt from 'bcrypt';
 import { Phone } from 'src/domain/value-objects/Phone';
 import { Email } from 'src/domain/value-objects/Email';
 import { Password } from 'src/domain/value-objects/password';
+import { ClientProfileDTO } from 'src/dtos/client-profile.dto';
+import { client } from 'db/db';
+import { noop } from 'rxjs';
 
 
 @Injectable()
@@ -77,5 +80,20 @@ export class ClientService {
       throw new NotFoundException('Cliente não encontrado');
     }
     await this.clientRepository.updateFidelity(id, client.fidelity + points);
+  }
+
+  async seeProfile(id: number): Promise<ClientProfileDTO> {
+    const client = await this.clientRepository.findOneById(id);
+    const profileClient = new ClientProfileDTO(
+                                client.name, 
+                                client.gmail, 
+                                client.phone, 
+                                client.fidelity );
+
+    if(!client) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+
+    return profileClient;
   }
 }

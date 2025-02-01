@@ -43,4 +43,13 @@ export class ClientController {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
+
+  @Get(':id/profile')
+  async seeProfile(@Param('id') id: number) {
+      try {
+        return await this.clientService.seeProfile(id);
+      } catch (error) {
+        throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+  }
 }
