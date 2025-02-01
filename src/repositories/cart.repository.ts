@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { client } from '../../db/db'; 
 
 @Injectable()
-export class CardRepository {
+export class CartRepository {
   async findCartByClientId(clientId: number): Promise<any> {
     const result = await client.query(
       'SELECT * FROM cart WHERE client_id = $1',

@@ -1,13 +1,13 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
-import { CardService } from '../services/card.service';
+import { CartService } from '../services/cart.service';
 
 @Controller('cart')  
-export class CardController {
-  constructor(private readonly cardService: CardService) {}
+export class CartController {
+  constructor(private readonly cartService: CartService) {}
 
   @Get(':clientId')
   async getCart(@Param('clientId') clientId: number): Promise<any> {
-    return await this.cardService.getCartByClientId(clientId);
+    return await this.cartService.getCartByClientId(clientId);
   }
 
   // Adiciona um item ao carrinho do cliente
@@ -17,7 +17,7 @@ export class CardController {
     @Body() body: { itemId: number; quantity?: number },
   ): Promise<any> {
     const { itemId, quantity } = body;
-    const addedItem = await this.cardService.addItem(clientId, itemId, quantity || 1);
+    const addedItem = await this.cartService.addItem(clientId, itemId, quantity || 1);
     return { message: 'Item adicionado ao carrinho com sucesso.', item: addedItem };
   }
 
@@ -28,7 +28,7 @@ export class CardController {
     @Param('cartItemId') cartItemId: number,
     @Body() body: { quantity: number },
   ): Promise<any> {
-    const updated = await this.cardService.updateItemQuantity(clientId, cartItemId, body.quantity);
+    const updated = await this.cartService.updateItemQuantity(clientId, cartItemId, body.quantity);
     return { message: 'Quantidade atualizada com sucesso.', item: updated };
   }
 
@@ -38,7 +38,7 @@ export class CardController {
     @Param('clientId') clientId: number,
     @Param('cartItemId') cartItemId: number,
   ): Promise<any> {
-    const removed = await this.cardService.removeItem(clientId, cartItemId);
+    const removed = await this.cartService.removeItem(clientId, cartItemId);
     if (removed) {
       return { message: 'Item removido com sucesso.' };
     } else {
@@ -48,7 +48,7 @@ export class CardController {
 
   @Get(':clientId/total')
   async getCartTotal(@Param('clientId') clientId: number): Promise<any> {
-    const total = await this.cardService.getCartTotalByClientId(clientId);
+    const total = await this.cartService.getCartTotalByClientId(clientId);
     return { total };
   }
 }
