@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import { ClientRepository } from '../repositories/client.repository';
 import * as bcrypt from 'bcrypt';
 import { Phone } from 'src/domain/value-objects/Phone';
@@ -62,5 +62,21 @@ export class ClientService {
       throw new UnauthorizedException('Senha inválida!');
     }
     return client;
+  }
+
+  async getFidelity(id: number) {
+    const client = await this.clientRepository.findOneById(id);
+    if (!client) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+    return client.fidelity;
+  }
+
+  async addFidelity(id: number, points: number) {
+    const client = await this.clientRepository.findOneById(id);
+    if (!client) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+    await this.clientRepository.updateFidelity(id, client.fidelity + points);
   }
 }

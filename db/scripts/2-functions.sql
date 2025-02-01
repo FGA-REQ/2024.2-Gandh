@@ -41,3 +41,17 @@ CREATE TRIGGER create_menu_trigger
 AFTER INSERT ON admin
 FOR EACH ROW
 EXECUTE FUNCTION create_menu_for_admin();
+
+CREATE OR REPLACE FUNCTION update_fidelity(client_id INT, points_to_add INT)
+RETURNS VOID AS $$
+BEGIN
+
+    ALTER TABLE client DISABLE TRIGGER prevent_fidelity_update;
+
+    UPDATE client
+    SET fidelity = fidelity + points_to_add
+    WHERE id = client_id;
+
+    ALTER TABLE client ENABLE TRIGGER prevent_fidelity_update;
+END;
+$$ LANGUAGE plpgsql;
