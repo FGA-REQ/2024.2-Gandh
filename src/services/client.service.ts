@@ -18,7 +18,6 @@ export class ClientService {
     name: string;
     gmail: string;
     phone: string;
-    address: string;
     password: string;
   }) {
     const gmail = Email.create(client.gmail);

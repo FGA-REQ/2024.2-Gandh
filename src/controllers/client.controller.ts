@@ -15,7 +15,7 @@ export class ClientController {
   }
 
   @Post()
-  async criarCliente(@Body() body: { name: string; gmail: string; phone: string; address: string; password: string }) {
+  async criarCliente(@Body() body: { name: string; gmail: string; phone: string; password: string }) {
     try {
       await this.clientService.create(body);
       return { message: 'Cliente criado com sucesso' };
