@@ -56,14 +56,16 @@ export class ClientService {
       );
     }
 
-    const isPasswordValid = await bcrypt.compare(
-      credentials.password,
-      client.password,
-    );
-    if(!isPasswordValid) {
+    const password = Password.create(credentials.password).value;
+
+    const isPasswordValid = await bcrypt.compare(password, client.password);
+
+    if(isPasswordValid) {
+      return client;
+    } else {
       throw new UnauthorizedException('Senha inválida!');
     }
-    return client;
+    
   }
 
   async getFidelity(id: number) {

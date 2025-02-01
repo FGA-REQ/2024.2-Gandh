@@ -20,11 +20,10 @@ export class ClientRepository {
     phone: string;
     password: string;
   }) {
-    const hashedPassword = await bcrypt.hash(password, 10);
     try {
       await client.query(
         'INSERT INTO client (name, gmail, phone,password) VALUES ($1, $2, $3, $4)',
-        [name, gmail, phone, hashedPassword], 
+        [name, gmail, phone, password], 
       );
     } catch (error) {
       console.error('Erro ao criar cliente:', error);
