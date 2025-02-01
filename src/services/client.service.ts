@@ -7,6 +7,7 @@ import { Password } from 'src/domain/value-objects/password';
 import { ClientProfileDTO } from 'src/dtos/client-profile.dto';
 import { client } from 'db/db';
 import { noop } from 'rxjs';
+import { updateClientDTO } from 'src/dtos/update-client.dto';
 
 
 @Injectable()
@@ -97,5 +98,43 @@ export class ClientService {
     }
 
     return profileClient;
+  }
+
+  async updateClientProfile(id: number, updateData: updateClientDTO): Promise<ClientProfileDTO> {
+    const existingClient = await this.clientRepository.findOneById(id);
+
+    if(!existingClient) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+
+    const updateClient: Partial<Client> = {};
+
+    if(updateData.name) {
+      updateClient.name = updateData.name;
+    }
+
+    if(updateData.gmail) {
+      const newEmail = Email.create(updateData.gmail).value;
+
+      const alreadyExists = await this.clientRepository.findOneByEmail(newEmail);
+      if(alreadyExists && alreadyExists.id !== id) {
+        throw new BadRequestException('Este email já está em uso');
+      }
+
+      updateClient.gmail = newEmail;
+    }
+
+    if(updateData.phone) {
+      updateClient.phone = Phone.create(updateData.phone).value;
+    }
+
+    if(updateData.password) {
+      const newPassword = Password.create(updateData.password)
+      updateClient.password = await bcrypt.hash(newPassword.value, 10);
+    }
+
+    await this.clientRepository.updateFields(id, updateClient);
+
+    return this.clientRepository.findOneById(id);
   }
 }
