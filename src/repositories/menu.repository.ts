@@ -146,4 +146,12 @@ export class MenuRepository {
     );
     return result.rowCount > 0;
   }
+
+  async getMenuStructure(id_menu: number): Promise<any> {
+    const result = await client.query(
+      'SELECT get_menu_structure($1) AS menu_structure',
+      [id_menu]
+    );
+    return result.rows[0].menu_structure;
+  }
 }

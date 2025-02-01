@@ -84,3 +84,33 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_menu_structure(p_menu_id INT)
+RETURNS JSON AS $$
+DECLARE
+  result JSON;
+BEGIN
+  SELECT JSON_AGG(
+           JSON_BUILD_OBJECT(
+             'group_name', g.name,
+             'items', (
+               SELECT COALESCE(JSON_AGG(
+                 JSON_BUILD_OBJECT(
+                   'name', i.name,
+                   'description', i.description,
+                   'photo', i.photo,
+                   'price', COALESCE(i.new_price, i.price)
+                 )
+               ), '[]'::json)
+               FROM item i
+               WHERE i.id_g = g.id_g
+             )
+           )
+         ) INTO result
+  FROM "group" g
+  WHERE g.id_menu = p_menu_id;
+
+  RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
+
