@@ -20,11 +20,10 @@ export class ClientRepository {
     phone: string;
     password: string;
   }) {
-    const hashedPassword = await bcrypt.hash(password, 10);
     try {
       await client.query(
         'INSERT INTO client (name, gmail, phone,password) VALUES ($1, $2, $3, $4)',
-        [name, gmail, phone, hashedPassword], 
+        [name, gmail, phone, password], 
       );
     } catch (error) {
       console.error('Erro ao criar cliente:', error);
@@ -44,5 +43,23 @@ export class ClientRepository {
 
   async updateFidelity(id: number, fidelity: number) {
     await client.query('SELECT update_fidelity($1, $2)', [id, fidelity]);
+  }
+
+  async updateFields(id: number, data: Partial<Client>) {
+    try {
+      const query = `
+        UPDATE client
+        SET ${Object.keys(data)
+          .map((key, index) => `${key} = $${index+1}`)
+          .join(', ')}
+        WHERE id = $${Object.keys(data).length + 1}
+      `;
+
+      const values = [...Object.values(data), id];
+      await client.query(query, values);
+
+    } catch (error) {
+      throw new Error('Erro ao atualizar o cliente no banco de dados');
+    }
   }
 }

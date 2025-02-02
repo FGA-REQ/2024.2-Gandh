@@ -4,6 +4,10 @@ import * as bcrypt from 'bcrypt';
 import { Phone } from 'src/domain/value-objects/Phone';
 import { Email } from 'src/domain/value-objects/Email';
 import { Password } from 'src/domain/value-objects/password';
+import { ClientProfileDTO } from 'src/dtos/client-profile.dto';
+import { client } from 'db/db';
+import { noop } from 'rxjs';
+import { updateClientDTO } from 'src/dtos/update-client.dto';
 
 
 @Injectable()
@@ -53,14 +57,16 @@ export class ClientService {
       );
     }
 
-    const isPasswordValid = await bcrypt.compare(
-      credentials.password,
-      client.password,
-    );
-    if(!isPasswordValid) {
+    const password = Password.create(credentials.password).value;
+
+    const isPasswordValid = await bcrypt.compare(password, client.password);
+
+    if(isPasswordValid) {
+      return client;
+    } else {
       throw new UnauthorizedException('Senha inválida!');
     }
-    return client;
+    
   }
 
   async getFidelity(id: number) {
@@ -77,5 +83,58 @@ export class ClientService {
       throw new NotFoundException('Cliente não encontrado');
     }
     await this.clientRepository.updateFidelity(id, client.fidelity + points);
+  }
+
+  async seeProfile(id: number): Promise<ClientProfileDTO> {
+    const client = await this.clientRepository.findOneById(id);
+    const profileClient = new ClientProfileDTO(
+                                client.name, 
+                                client.gmail, 
+                                client.phone, 
+                                client.fidelity );
+
+    if(!client) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+
+    return profileClient;
+  }
+
+  async updateClientProfile(id: number, updateData: updateClientDTO): Promise<ClientProfileDTO> {
+    const existingClient = await this.clientRepository.findOneById(id);
+
+    if(!existingClient) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+
+    const updateClient: Partial<Client> = {};
+
+    if(updateData.name) {
+      updateClient.name = updateData.name;
+    }
+
+    if(updateData.gmail) {
+      const newEmail = Email.create(updateData.gmail).value;
+
+      const alreadyExists = await this.clientRepository.findOneByEmail(newEmail);
+      if(alreadyExists && alreadyExists.id !== id) {
+        throw new BadRequestException('Este email já está em uso');
+      }
+
+      updateClient.gmail = newEmail;
+    }
+
+    if(updateData.phone) {
+      updateClient.phone = Phone.create(updateData.phone).value;
+    }
+
+    if(updateData.password) {
+      const newPassword = Password.create(updateData.password)
+      updateClient.password = await bcrypt.hash(newPassword.value, 10);
+    }
+
+    await this.clientRepository.updateFields(id, updateClient);
+
+    return this.clientRepository.findOneById(id);
   }
 }
