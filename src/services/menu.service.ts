@@ -83,4 +83,8 @@ export class MenuService {
   async deleteItemComplement(id_ic: number) {
     return this.menuRepository.deleteItemComplement(id_ic);
   }
+
+  async getMenuStructure(id_menu: number): Promise<any> {
+    return this.menuRepository.getMenuStructure(id_menu);
+  }
 }

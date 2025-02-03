@@ -146,4 +146,10 @@ export class MenuController {
       return { message: `Item de complemento com ID ${icId} não encontrado.` };
     }
   }
+
+  @Get(':id/structure')
+  async getMenuStructure(@Param('id') id: number): Promise<any> {
+    const structure = await this.menuService.getMenuStructure(id);
+    return { menuStructure: structure };
+  }
 }
