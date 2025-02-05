@@ -1,9 +1,12 @@
-import React, { Fragment } from 'react'
+import React, { useRef, Fragment } from 'react';
 
 import Script from 'dangerous-html/react'
 import PropTypes from 'prop-types'
 
 import './hero17.css'
+import { Link } from 'react-router-dom'
+
+const sobreRef = useRef(null);
 
 const Hero17 = (props) => {
   return (
@@ -33,33 +36,38 @@ const Hero17 = (props) => {
           </p>
         </div>
         <div className="hero17-actions">
-          <button className="thq-button-filled hero17-button1">
-            <span className="thq-body-small">
-              {props.action1 ?? (
-                <Fragment>
-                  <span className="hero17-text6">Menu</span>
-                </Fragment>
-              )}
-            </span>
-          </button>
-          <button className="thq-button-outline hero17-button2">
-            <span className="thq-body-small">
-              {props.action2 ?? (
-                <Fragment>
-                  <span className="hero17-text5">Fidelidade</span>
-                </Fragment>
-              )}
-            </span>
-          </button>
-          <button className="thq-button-outline hero17-button2">
-            <span className="thq-body-small">
-              {props.action3 ?? (
-                <Fragment>
-                  <span className="hero17-text5">Sobre</span>
-                </Fragment>
-              )}
-            </span>
-          </button>
+        <Link to="/menu" className="thq-button-filled hero17-button1">
+          <span className="thq-body-small">
+            {props.action1 ?? (
+              <Fragment>
+                <span className="home-text115">Menu</span>
+              </Fragment>
+            )}
+          </span>
+        </Link>
+
+        <Link to="/fidelidade" className="thq-button-outline hero17-button2">
+          <span className="thq-body-small">
+            {props.action2 ?? (
+              <Fragment>
+                <span className="home-text115">Fidelidade</span>
+              </Fragment>
+            )}
+          </span>
+        </Link>
+        <button 
+          className="thq-button-outline hero17-button2"
+          onClick={() => sobreRef.current?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          <span className="thq-body-small">
+            {props.action3 ?? (
+              <Fragment>
+                <span className="hero17-text5">Sobre</span>
+              </Fragment>
+            )}
+          </span>
+        </button>
+
         </div>
       </div>
       <div className="hero17-content2">

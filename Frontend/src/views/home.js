@@ -22,48 +22,6 @@ const Home = (props) => {
         <meta property="og:title" content="Immediate Ripe Mandrill" />
       </Helmet>
       <Navbar8
-        page4Description={
-          <Fragment>
-            <span className="home-text100">
-              Get in touch with us for any inquiries or feedback.
-            </span>
-          </Fragment>
-        }
-        action1={
-          <Fragment>
-            <span className="home-text101">Order Now</span>
-          </Fragment>
-        }
-        link2={
-          <Fragment>
-            <span className="home-text102">/menu</span>
-          </Fragment>
-        }
-        page1={
-          <Fragment>
-            <span className="home-text103">Home</span>
-          </Fragment>
-        }
-        link1={
-          <Fragment>
-            <span className="home-text104">/home</span>
-          </Fragment>
-        }
-        page4={
-          <Fragment>
-            <span className="home-text105">Contact</span>
-          </Fragment>
-        }
-        page2={
-          <Fragment>
-            <span className="home-text106">Menu</span>
-          </Fragment>
-        }
-        link4={
-          <Fragment>
-            <span className="home-text107">/contact</span>
-          </Fragment>
-        }
         page1Description={
           <Fragment>
             <span className="home-text108">
@@ -94,11 +52,6 @@ const Home = (props) => {
             <span className="home-text112">
               Learn more about our story and commitment to quality.
             </span>
-          </Fragment>
-        }
-        action2={
-          <Fragment>
-            <span className="home-text113">Contact Us</span>
           </Fragment>
         }
       ></Navbar8>
@@ -185,11 +138,6 @@ const Home = (props) => {
             <span className="home-text125">
               Explore a varidade com tradicionais sabores do Nordeste!
             </span>
-          </Fragment>
-        }
-        action1={
-          <Fragment>
-            <span className="home-text126">Order Now</span>
           </Fragment>
         }
       ></CTA26>

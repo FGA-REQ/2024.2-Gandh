@@ -10,14 +10,14 @@
   
   .logo-container {
     position: absolute;
-    top: 20px; /* Ajuste a margem superior */
-    left: 20px; /* Ajuste a margem esquerda */
+    top: 20px;
+    left: 20px;
     display: flex;
     align-items: center;
 }
 
   .logo {
-      max-width: 150px; /* Ajuste o tamanho da logo, se necessário */
+      max-width: 150px;
   }
 
   .logo-container {

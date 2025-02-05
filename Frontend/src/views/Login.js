@@ -1,38 +1,71 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import './Login.css';
+import paraibavetor from './paraibavetor.svg';
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const history = useHistory()
+  const history = useHistory();
+  const [formData, setFormData] = useState({
+    email: '',
+    senha: ''
+  });
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    // Implemente sua lógica de autenticação aqui
-    localStorage.setItem('isLoggedIn', 'true')
-    history.push('/home')
-  }
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Lógica de login aqui
+    localStorage.setItem('isLoggedIn', 'true');
+    history.push('/home');
+  };
 
   return (
-    <div className="login-page">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Entrar</button>
-      </form>
-    </div>
-  )
-}
+    <div className="login-container">
+      <div className="logo-container">
+        <img src={paraibavetor} alt="Paraíba Hot Dog" className="logo" />
+      </div>
+      
+      <div className="form-box">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-export default Login
+          <div className="input-group">
+            <input
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              value={formData.senha}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button type="submit" className="submit-btn">
+            Entrar
+          </button>
+        </form>
+
+        <div className="register-link">
+          <p>Não tem uma conta? <a href="/register">Cadastre-se</a></p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

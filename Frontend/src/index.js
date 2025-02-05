@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  Redirect
 } from 'react-router-dom'
 
 import './style.css'
@@ -13,6 +13,12 @@ import Login from './views/Login'
 import Register from './views/Register'
 import Home from './views/home'
 import NotFound from './views/not-found'
+import Menu from './views/Menu'
+import Fidelidade from './views/Fidelidade'
+
+const isAuthenticated = () => {
+  return localStorage.getItem('isLoggedIn') === 'true';
+};
 
 // Componente para rotas protegidas
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -42,8 +48,16 @@ const App = () => {
         <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <PrivateRoute path="/home" component={Home} />
-        <Route component={NotFound} path="**" />
+        <Route path="/menu" component={Menu} />
+        <Route path="/fidelidade" component={Fidelidade} />
+        <Route 
+          path="/home" 
+          render={() => (
+            isAuthenticated() ? <Home /> : <Redirect to="/login" />
+          )} 
+        />
+
+        <Route component={NotFound} />
       </Switch>
     </Router>
   )
