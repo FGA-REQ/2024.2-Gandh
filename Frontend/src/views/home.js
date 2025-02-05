@@ -105,12 +105,17 @@ const Home = (props) => {
       <Hero17
         action2={
           <Fragment>
-            <span className="home-text114">Secondary action</span>
+            <span className="home-text114">Fidelidade</span>
           </Fragment>
         }
         action1={
           <Fragment>
-            <span className="home-text115">Main action</span>
+            <span className="home-text115">Menu</span>
+          </Fragment>
+        }
+        action3={
+          <Fragment>
+            <span className="home-text115">Sobre</span>
           </Fragment>
         }
         heading1={
@@ -123,10 +128,7 @@ const Home = (props) => {
         content1={
           <Fragment>
             <span className="home-text117">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique. Duis cursus,
-              mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam
-              libero vitae erat.
+              O cachorro quente mais arretado do centro-oeste
             </span>
           </Fragment>
         }
@@ -174,15 +176,14 @@ const Home = (props) => {
         heading1={
           <Fragment>
             <span className="home-text124">
-              Discover the Flavors of the Northeast
+              Descubra os sabores do Nordeste!
             </span>
           </Fragment>
         }
         content1={
           <Fragment>
             <span className="home-text125">
-              Explore a variety of traditional dishes and flavors from the
-              Northeast region of Brazil.
+              Explore a varidade com tradicionais sabores do Nordeste!
             </span>
           </Fragment>
         }
@@ -196,8 +197,7 @@ const Home = (props) => {
         feature3Description={
           <Fragment>
             <span className="home-text127">
-              Discover the rich history and passion behind our brand, rooted in
-              the vibrant culture and culinary heritage of the Northeast.
+              Uma cozinha com muita história e paixão por traz de cada ingrediente, seu hotdog montado com o amor que voocê merece.
             </span>
           </Fragment>
         }
@@ -211,25 +211,24 @@ const Home = (props) => {
         }
         feature2Title={
           <Fragment>
-            <span className="home-text129">Easy Ordering Process</span>
+            <span className="home-text129">Fácil e rápido</span>
           </Fragment>
         }
         feature1Title={
           <Fragment>
-            <span className="home-text130">Authentic Northeastern Cuisine</span>
+            <span className="home-text130">Comida autêntica nordestina</span>
           </Fragment>
         }
         feature2Description={
           <Fragment>
             <span className="home-text131">
-              Our user-friendly interface allows you to browse the menu, select
-              your favorite dishes, and place orders with just a few clicks.
+              Nossa interface fácil e agradável para pedir em apenas alguns cliques!
             </span>
           </Fragment>
         }
         feature3Title={
           <Fragment>
-            <span className="home-text132">Company Story</span>
+            <span className="home-text132">O abraço que só o Nordeste tem</span>
           </Fragment>
         }
       ></Features25>
@@ -301,11 +300,6 @@ const Home = (props) => {
             <span className="home-text145">Arretado simples e duplo</span>
           </Fragment>
         }
-        plan2Yearly={
-          <Fragment>
-            <span className="home-text146">or $299 yearly</span>
-          </Fragment>
-        }
         plan1Action1={
           <Fragment>
             <span className="home-text147">Get started</span>
@@ -356,7 +350,7 @@ const Home = (props) => {
         content1={
           <Fragment>
             <span className="home-text156">
-              Choose the perfect plan for you
+              Uma varidade de opções e cardápios para se aventurar
             </span>
           </Fragment>
         }
@@ -367,7 +361,7 @@ const Home = (props) => {
         }
         heading1={
           <Fragment>
-            <span className="home-text158">Pricing plan</span>
+            <span className="home-text158">O que temos a oferecer</span>
           </Fragment>
         }
         plan3Feature31={
@@ -400,21 +394,6 @@ const Home = (props) => {
             <span className="home-text164">E muito mais!</span>
           </Fragment>
         }
-        plan2Yearly1={
-          <Fragment>
-            <span className="home-text165">or $29 monthly</span>
-          </Fragment>
-        }
-        plan2Price={
-          <Fragment>
-            <span className="home-text166">R$29.99</span>
-          </Fragment>
-        }
-        plan3Yearly1={
-          <Fragment>
-            <span className="home-text167">or $49 monthly</span>
-          </Fragment>
-        }
         plan2Feature31={
           <Fragment>
             <span className="home-text168">Feature text goes here</span>
@@ -423,16 +402,6 @@ const Home = (props) => {
         plan3Feature11={
           <Fragment>
             <span className="home-text169">Feature text goes here</span>
-          </Fragment>
-        }
-        plan1Yearly1={
-          <Fragment>
-            <span className="home-text170">or $20 monthly</span>
-          </Fragment>
-        }
-        plan2Price1={
-          <Fragment>
-            <span className="home-text171">$299/yr</span>
           </Fragment>
         }
         plan3Yearly={
@@ -445,11 +414,6 @@ const Home = (props) => {
             <span className="home-text173">UauFajor!</span>
           </Fragment>
         }
-        plan3Price1={
-          <Fragment>
-            <span className="home-text174">$499/yr</span>
-          </Fragment>
-        }
         plan1Feature31={
           <Fragment>
             <span className="home-text175">Feature text goes here</span>
@@ -460,11 +424,6 @@ const Home = (props) => {
             <span className="home-text176">
               Xique-xique simples, duplo e triplo
             </span>
-          </Fragment>
-        }
-        plan1Yearly={
-          <Fragment>
-            <span className="home-text177">or $200 yearly</span>
           </Fragment>
         }
         plan1Feature1={
@@ -484,7 +443,7 @@ const Home = (props) => {
         content2={
           <Fragment>
             <span className="home-text180">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Selecione entre individual e combo para ver!
               <span
                 dangerouslySetInnerHTML={{
                   __html: ' ',
@@ -496,11 +455,6 @@ const Home = (props) => {
         plan3Action1={
           <Fragment>
             <span className="home-text181">Get started</span>
-          </Fragment>
-        }
-        plan1Price={
-          <Fragment>
-            <span className="home-text182">R$19.99</span>
           </Fragment>
         }
         plan3={

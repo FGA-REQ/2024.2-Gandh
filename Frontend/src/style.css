@@ -12,11 +12,11 @@ body {
   --dl-space-space-unit: 16px;
   --dl-size-size-xxlarge: 288px;
   --dl-size-size-maxwidth: 1400px;
-  --dl-color-theme-accent1: #8b4513;
+  --dl-color-theme-accent1: #9A7A1F;
   --dl-color-theme-accent2: #F5D1B0;
   --dl-radius-radius-round: 50%;
-  --dl-color-theme-primary1: #BF4408;
-  --dl-color-theme-primary2: #E65103;
+  --dl-color-theme-primary1: #9A7A1F;
+  --dl-color-theme-primary2: #9A7A1F;
   --dl-space-space-halfunit: 8px;
   --dl-space-space-sixunits: 96px;
   --dl-space-space-twounits: 32px;
@@ -92,10 +92,10 @@ body {
   padding: 0.5rem 1rem;
   align-self: stretch;
   text-align: center;
-  border-color: var(--dl-color-theme-neutral-dark);
+  border-color: #9A7A1F;
   border-width: 1px;
   border-radius: var(--dl-radius-radius-inputradius);
-  background-color: var(--dl-color-theme-neutral-light);
+  background-color: #9A7A1F;
 }
  
 .thq-input:focus {

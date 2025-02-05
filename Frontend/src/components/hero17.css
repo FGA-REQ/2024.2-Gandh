@@ -11,7 +11,7 @@
 }
  
 .hero17-column {
-  gap: var(--dl-space-space-oneandhalfunits);
+  gap: 60px;
   width: auto;
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
 }
  
 .hero17-actions {
-  gap: var(--dl-space-space-unit);
+  gap: 400px;
   display: flex;
   align-items: flex-start;
   padding-top: var(--dl-space-space-unit);
