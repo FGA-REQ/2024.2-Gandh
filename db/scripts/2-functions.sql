@@ -152,14 +152,15 @@ CREATE OR REPLACE FUNCTION delete_completed_request()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.is_completed THEN
-        DELETE FROM request WHERE id_request = NEW.id_request;
+        DELETE FROM request WHERE id_request = OLD.id_request;
+        RETURN NULL;
     END IF;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_delete_completed_request
-AFTER UPDATE OF is_completed
+BEFORE UPDATE OF is_completed
 ON request
 FOR EACH ROW
 WHEN (NEW.is_completed = TRUE)
@@ -172,18 +173,14 @@ CREATE OR REPLACE FUNCTION create_order(
     p_order_details TEXT
 )
 RETURNS VOID AS $$
-DECLARE
-    v_admin_id INT;
 BEGIN
+    IF p_delivery_option NOT IN (1, 2) THEN
+        RAISE EXCEPTION 'Opção de entrega inválida: %', p_delivery_option;
+    END IF;
 
-    SELECT get_admin_by_item(i.id_i)
-    INTO v_admin_id
-    FROM cart_item ci
-    JOIN item i ON ci.item_id = i.id_i
-    WHERE ci.cart_id = p_cart_id
-    LIMIT 1; 
-
-    INSERT INTO request (cart_id, admin_id, address, delivery_option, order_details)
-    VALUES (p_cart_id, v_admin_id, p_address, p_delivery_option, p_order_details);
+    INSERT INTO request (cart_id, address, delivery_option, order_details)
+    VALUES (p_cart_id, p_address, p_delivery_option, p_order_details);
 END;
 $$ LANGUAGE plpgsql;
+
+

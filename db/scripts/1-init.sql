@@ -86,10 +86,9 @@ CREATE TABLE IF NOT EXISTS cart_item_complement (
 CREATE TABLE IF NOT EXISTS request (
     id_request SERIAL PRIMARY KEY,
     cart_id INT NOT NULL REFERENCES cart(id_cart) ON DELETE CASCADE,
-    admin_id INT NOT NULL REFERENCES admin(id) ON DELETE CASCADE,
     address TEXT,
     delivery_option INT NOT NULL CHECK (delivery_option IN (1, 2)), -- 1 para retirada, 2 para delivery
     order_details TEXT, 
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_completed BOOLEAN DEFAULT FALSE
 );
