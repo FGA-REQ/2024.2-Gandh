@@ -61,12 +61,18 @@ DECLARE
     total NUMERIC;
     discount_applied BOOLEAN;
 BEGIN
-    SELECT COALESCE(SUM( COALESCE(i.new_price, i.price) * ci.quantity ), 0)
+    SELECT COALESCE(SUM(COALESCE(i.new_price, i.price) * ci.quantity), 0)
       INTO total
       FROM cart_item ci
       JOIN item i ON ci.item_id = i.id_i
      WHERE ci.cart_id = p_cart_id;
-     
+
+    SELECT total + COALESCE(SUM(cic.full_price), 0)
+      INTO total
+      FROM cart_item_complement cic
+      JOIN cart_item ci ON cic.id_cart_item = ci.id_cart_item
+     WHERE ci.cart_id = p_cart_id;
+
     SELECT fidelity_discount
       INTO discount_applied
       FROM cart
@@ -76,7 +82,7 @@ BEGIN
         RAISE NOTICE 'O desconto de 15 reais foi aplicado';
         total := GREATEST(total - 15, 0);
     END IF;
-    
+
     RETURN total;
 END;
 $$ LANGUAGE plpgsql;
@@ -129,3 +135,55 @@ BEFORE UPDATE ON client
 FOR EACH ROW
 WHEN (NEW.fidelity >= 12)
 EXECUTE FUNCTION apply_fidelity_discount();
+
+CREATE OR REPLACE FUNCTION create_complement_for_cart_item(p_cart_item_id INT, p_complement_id INT, p_quantity INT)
+RETURNS VOID AS $$
+BEGIN
+    IF p_quantity > 0 THEN
+        INSERT INTO cart_item_complement (id_cart_item, id_ic, quantity, full_price)
+        SELECT p_cart_item_id, p_complement_id, p_quantity, COALESCE(price, 0) * p_quantity
+        FROM item_c
+        WHERE id_ic = p_complement_id;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION delete_completed_request()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.is_completed THEN
+        DELETE FROM request WHERE id_request = NEW.id_request;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_delete_completed_request
+AFTER UPDATE OF is_completed
+ON request
+FOR EACH ROW
+WHEN (NEW.is_completed = TRUE)
+EXECUTE FUNCTION delete_completed_request();
+
+CREATE OR REPLACE FUNCTION create_order(
+    p_cart_id INT,
+    p_address TEXT,
+    p_delivery_option INT,
+    p_order_details TEXT
+)
+RETURNS VOID AS $$
+DECLARE
+    v_admin_id INT;
+BEGIN
+
+    SELECT get_admin_by_item(i.id_i)
+    INTO v_admin_id
+    FROM cart_item ci
+    JOIN item i ON ci.item_id = i.id_i
+    WHERE ci.cart_id = p_cart_id
+    LIMIT 1; 
+
+    INSERT INTO request (cart_id, admin_id, address, delivery_option, order_details)
+    VALUES (p_cart_id, v_admin_id, p_address, p_delivery_option, p_order_details);
+END;
+$$ LANGUAGE plpgsql;

@@ -45,4 +45,24 @@ export class CartService {
     const total = await this.cartRepository.getCartTotal(cart.id_cart);
     return total;
   }
+
+  async addComplementToItem(cartItemId: number, complementId: number, quantity: number): Promise<any> {
+    if (quantity <= 0) {
+      throw new Error('A quantidade do complemento deve ser maior que zero.');
+    }
+    const addedComplement = await this.cartRepository.insertComplement(cartItemId, complementId, quantity);
+    return addedComplement;
+  }
+
+  async updateComplementQuantity(cartItemId: number, complementId: number, quantity: number): Promise<any> {
+    if (quantity <= 0) {
+      throw new Error('A quantidade do complemento deve ser maior que zero.');
+    }
+    const updatedComplement = await this.cartRepository.updateComplementQuantity(cartItemId, complementId, quantity);
+    return updatedComplement;
+  }
+
+  async getComplementsOfCartItem(cartItemId: number): Promise<any[]> {
+    return await this.cartRepository.findComplementsOfCartItem(cartItemId);
+  }
 }
