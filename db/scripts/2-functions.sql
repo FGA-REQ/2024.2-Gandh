@@ -183,4 +183,33 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_order_details(p_request_id INT)
+RETURNS TABLE (
+    item_name VARCHAR,
+    item_quantity INT,
+    complement_name VARCHAR,
+    complement_quantity INT,
+    order_details TEXT,
+    delivery_option INT,
+    created_at TIMESTAMP
+) AS $$
+BEGIN
+    RETURN QUERY 
+    SELECT 
+        i.name AS item_name,
+        ci.quantity AS item_quantity,
+        ic.name AS complement_name,
+        cic.quantity AS complement_quantity,
+        r.order_details,
+        r.delivery_option,
+        r.created_at
+    FROM request r
+    JOIN cart c ON r.cart_id = c.id_cart
+    JOIN cart_item ci ON c.id_cart = ci.cart_id
+    JOIN item i ON ci.item_id = i.id_i
+    LEFT JOIN cart_item_complement cic ON ci.id_cart_item = cic.id_cart_item
+    LEFT JOIN item_c ic ON cic.id_ic = ic.id_ic
+    WHERE r.id_request = p_request_id;
+END;
+$$ LANGUAGE plpgsql;
 

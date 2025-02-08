@@ -15,4 +15,9 @@ export class RequestRepository {
   async completeRequest(requestId: number) {
     await client.query('UPDATE request SET is_completed = TRUE WHERE id_request = $1', [requestId]);
   }
+
+  async getOrderDetails(requestId: number) {
+    const result = await client.query('SELECT * FROM get_order_details($1)', [requestId]);
+    return result.rows;
+  }  
 }

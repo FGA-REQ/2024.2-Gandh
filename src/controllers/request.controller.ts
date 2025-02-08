@@ -21,4 +21,9 @@ export class RequestController {
     await this.requestService.completeRequest(requestId);
     return { message: 'Pedido marcado como completo e removido.' };
   }
+
+  @Get(':requestId/details')
+  async getOrderDetails(@Param('requestId') requestId: number) {
+    return await this.requestService.getOrderDetails(requestId);
+  }
 }

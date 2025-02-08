@@ -16,4 +16,8 @@ export class RequestService {
   async completeRequest(requestId: number) {
     return await this.requestRepository.completeRequest(requestId);
   }
+
+  async getOrderDetails(requestId: number) {
+    return await this.requestRepository.getOrderDetails(requestId);
+  }  
 }
