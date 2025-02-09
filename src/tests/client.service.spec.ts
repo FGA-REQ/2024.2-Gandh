@@ -4,6 +4,7 @@ import { ClientRepository } from '../repositories/client.repository';
 import { BadRequestException, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { client } from '../../db/db';
+import { ClientProfileDTO } from 'src/dtos/client-profile.dto';
 
 const mockClientRepository = {
     getAll: jest.fn(),
@@ -39,7 +40,7 @@ describe('ClientService', () => {
     });
 
     afterAll(async () => {
-        await client.end(); // Fecha a conexão com o banco de dados após todos os testes
+        await client.end();
     });
 
     describe('getAll', () => {
@@ -85,6 +86,149 @@ describe('ClientService', () => {
                 })
             ).rejects.toThrow(BadRequestException);
         });
+
+        it('deve criar com êxito um cliente com senha hasheada', async() => {
+            mockClientRepository.findOneByEmail.mockResolvedValue(null);
+            mockClientRepository.create.mockResolvedValue({id : 1});
+
+            await service.create({
+                name: 'cliente',
+                gmail: 'cliente@gmail.com',
+                phone: '11999999999',
+                password: 'senha123',
+            });
+
+            expect(bcrypt.hash).toHaveBeenCalledWith('senha123', 10);
+            expect(mockClientRepository.create).toHaveBeenCalledWith({
+                name: 'cliente',
+                gmail: 'cliente@gmail.com',
+                phone: '11999999999',
+                password: 'hashed_password',
+            })
+        })
+    });
+
+    describe('checkLogIn', () => {
+        it('deve lançar um erro se o email estiver vazio', async() => {
+            await expect(async() => {
+                await service.checkLogIn({gmail: '', password: 'senha'});
+            }).rejects.toThrow(UnauthorizedException);
+        });
+
+        it('deve lançar um erro se a senha estiver vazia', async() => {
+            await expect(async() => {
+                await service.checkLogIn({gmail: 'cliente@gmail.com', password: ''});
+            }).rejects.toThrow(UnauthorizedException);
+        });
+
+        it('deve lançar erro se o usuário não existe', async() => {
+            mockClientRepository.findOneByEmail.mockResolvedValue(null);
+
+            await expect(async() => {
+                await service.checkLogIn({ gmail: 'cliente@gmail.com', password: 'senha123'});
+            }).rejects.toThrow(UnauthorizedException);
+        });
+
+        it('deve retornar usuário com as credenciais corretas', async() => {
+            const mockClient = { id: 1, gmail: 'cliente@gmail.com', password: 'hashed_password' };
+            mockClientRepository.findOneByEmail.mockResolvedValue(mockClient);
+            (bcrypt.compare as jest.Mock).mockResolvedValue(true);
+
+            const result = await service.checkLogIn({gmail: 'cliente@gmail.com', password: 'senha123'});
+            expect(result).toEqual(mockClient);
+        });
+
+        it('deve retornar erro se a senha for inválida', async() => {
+            const mockClient = { id: 1, gmail: 'cliente@gmail.com', password: 'hashed_password' };
+            mockClientRepository.findOneByEmail.mockResolvedValue(mockClient);
+            (bcrypt.compare as jest.Mock).mockResolvedValue(false);
+
+            await expect(async() => {
+                await service.checkLogIn({ gmail: 'cliente@gmail.com', password: 'senha123'});
+            }).rejects.toThrow(UnauthorizedException);
+        });
+    });
+
+    describe('getFidelity', () => {
+        it('deve lançar erro se o cliente não existe', async() => {
+            mockClientRepository.findOneById.mockResolvedValue(null);
+
+            await expect(
+                service.getFidelity(9999)
+            ).rejects.toThrow(NotFoundException);
+        });
+
+        it('deve retornar os pontos de fidelidade', async() => {
+            mockClientRepository.findOneById.mockResolvedValue({id: 1, fidelity: 10});
+            const result = await service.getFidelity(1);
+
+            expect(result).toBe(10);
+        });
+    });
+
+    describe('addFidelity', () => {
+        it('deve lançar erro se o cliente não existe', async() => {
+            mockClientRepository.findOneById.mockResolvedValue(null);
+
+            await expect(
+                service.addFidelity(9999, 1)
+            ).rejects.toThrow(NotFoundException);
+        });
+
+        it('deve atualizar os pontos de fidelidade', async() => {
+            mockClientRepository.findOneById.mockResolvedValue({id: 1, fidelity: 10});
+            mockClientRepository.updateFidelity.mockResolvedValue(undefined);
+
+            const result = await service.addFidelity(1, 2);
+
+            expect(mockClientRepository.findOneById).toHaveBeenCalledWith(1);
+            expect(mockClientRepository.updateFidelity).toHaveBeenCalledWith(1, 12);
+        });
+    });
+
+    describe('seeProfile', () => {
+        it('deve lançar erro se o cliente não existe', async() => {
+            mockClientRepository.findOneById.mockResolvedValue(null);
+
+            await expect(service.seeProfile(999)).rejects.toThrow(NotFoundException);
+        });
+
+        it('deve retornar ClientProfileDTO com dados corretos', async() => {
+            const mockClient = {id: 1, name: 'client', gmail: 'client@gmail.com', phone: '11999999999', fidelity: 9};
+
+            mockClientRepository.findOneById.mockResolvedValue(mockClient);
+            const result = await service.seeProfile(1);
+
+            expect(result).toBeInstanceOf(ClientProfileDTO);
+            expect(result).toEqual({name: 'client', gmail: 'client@gmail.com', phone: '11999999999', fidelity: 9});
+        });
+    });
+
+    describe('updateClientProfile', () => {
+        it('deve atualizar apenas o nome', async() => {
+            const existingClient = {id: 1, name: 'antigo', gmail: 'email@gmail.com', phone: '11999999999'};
+            const updatedCliente = {...existingClient, name: 'novo'};
+            mockClientRepository.findOneById.mockResolvedValue(existingClient);
+            mockClientRepository.findOneById.mockResolvedValue(updatedCliente);            
+            mockClientRepository.updateFields.mockResolvedValue(undefined);
+
+            const result = await service.updateClientProfile(1, {name: 'novo'});
+
+            expect(result.name).toBe('novo');
+            expect(mockClientRepository.updateFields).toHaveBeenCalledWith(1, {name: 'novo'});
+        });
+
+        it('deve lançar erro ao tentar atualizar para um email existente', async() => {
+            mockClientRepository.findOneById.mockResolvedValue({id: 1, gmail: 'atual@gmail.com'});
+            mockClientRepository.findOneByEmail.mockResolvedValue({id: 2, gmail: 'existente@gmail.com'});
+
+            await expect(
+                service.updateClientProfile(1, {gmail: 'existente@gmail.com'})
+            ).rejects.toThrow(BadRequestException);
+
+            expect(mockClientRepository.findOneByEmail).toHaveBeenCalledWith('existente@gmail.com');
+        });
+
     });
 });
 
