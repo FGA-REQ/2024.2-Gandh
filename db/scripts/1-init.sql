@@ -56,7 +56,7 @@ CREATE TABLE item_c (
     name VARCHAR(255) NOT NULL,
     price NUMERIC,
     description TEXT,
-    status BOOLEAN NOT NULL DEFAULT TRUE,
+    status BOOLEAN DEFAULT TRUE,
     photo TEXT
 );
 
@@ -73,4 +73,22 @@ CREATE TABLE IF NOT EXISTS cart_item (
     item_id INT NOT NULL REFERENCES item(id_i) ON DELETE CASCADE,
     quantity INT DEFAULT 1,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS cart_item_complement (
+    id_cart_complement SERIAL PRIMARY KEY,
+    id_cart_item INT NOT NULL REFERENCES cart_item(id_cart_item) ON DELETE CASCADE,
+    id_ic INT NOT NULL REFERENCES item_c(id_ic) ON DELETE CASCADE,
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    full_price NUMERIC NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS request (
+    id_request SERIAL PRIMARY KEY,
+    cart_id INT NOT NULL REFERENCES cart(id_cart) ON DELETE CASCADE,
+    address TEXT,
+    delivery_option INT NOT NULL CHECK (delivery_option IN (1, 2)), -- 1 para retirada, 2 para delivery
+    order_details TEXT, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_completed BOOLEAN DEFAULT FALSE
 );

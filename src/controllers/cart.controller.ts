@@ -51,4 +51,34 @@ export class CartController {
     const total = await this.cartService.getCartTotalByClientId(clientId);
     return { total };
   }
+
+  @Post(':clientId/item/:cartItemId/complement')
+  async addComplementToCartItem(
+    @Param('clientId') clientId: number,
+    @Param('cartItemId') cartItemId: number,
+    @Body() body: { complementId: number; quantity: number },
+  ): Promise<any> {
+    const { complementId, quantity } = body;
+    const addedComplement = await this.cartService.addComplementToItem(cartItemId, complementId, quantity);
+    return { message: 'Complemento adicionado com sucesso.', complement: addedComplement };
+  }
+
+  // Atualiza a quantidade de um complemento de item no carrinho
+  @Put(':clientId/item/:cartItemId/complement/:complementId')
+  async updateComplementQuantity(
+    @Param('clientId') clientId: number,
+    @Param('cartItemId') cartItemId: number,
+    @Param('complementId') complementId: number,
+    @Body() body: { quantity: number },
+  ): Promise<any> {
+    const updatedComplement = await this.cartService.updateComplementQuantity(cartItemId, complementId, body.quantity);
+    return { message: 'Quantidade do complemento atualizada com sucesso.', complement: updatedComplement };
+  }
+
+  // Lista os complementos de um item do carrinho
+  @Get(':clientId/item/:cartItemId/complements')
+  async getComplementsOfCartItem(@Param('cartItemId') cartItemId: number): Promise<any> {
+    const complements = await this.cartService.getComplementsOfCartItem(cartItemId);
+    return { complements };
+  }
 }
