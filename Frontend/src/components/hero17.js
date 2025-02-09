@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import './hero17.css'
 import { Link } from 'react-router-dom'
 
-const sobreRef = useRef(null);
-
 const Hero17 = (props) => {
   return (
     <div className="hero17-header78">
@@ -57,7 +55,6 @@ const Hero17 = (props) => {
         </Link>
         <button 
           className="thq-button-outline hero17-button2"
-          onClick={() => sobreRef.current?.scrollIntoView({ behavior: 'smooth' })}
         >
           <span className="thq-body-small">
             {props.action3 ?? (
