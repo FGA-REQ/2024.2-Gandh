@@ -15,6 +15,10 @@ import Home from './views/home'
 import NotFound from './views/not-found'
 import Menu from './views/Menu'
 import Fidelidade from './views/Fidelidade'
+import Admin from './components/admin'
+import Clientes from './components/clientes'
+import Cardapio from './components/cardapio'
+import Pedido from './components/pedido'
 
 const isAuthenticated = () => {
   return localStorage.getItem('isLoggedIn') === 'true';
@@ -47,6 +51,10 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/clientes" component={Clientes} />
+        <Route path="/cardapio" component={Cardapio} />
+        <Route path="/pedido" component={Pedido} />
         <Route path="/register" component={Register} />
         <Route path="/menu" component={Menu} />
         <Route path="/fidelidade" component={Fidelidade} />

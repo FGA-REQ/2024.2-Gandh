@@ -19,9 +19,14 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de login aqui
-    localStorage.setItem('isLoggedIn', 'true');
-    history.push('/home');
+    if (formData.email === 'admin@gmail.com' && formData.senha === '123456') {
+      localStorage.setItem('isLoggedIn', 'true');
+      history.push('/admin');
+    } else {
+      // Lógica de login para usuários normais
+      localStorage.setItem('isLoggedIn', 'true');
+      history.push('/home');
+    }
   };
 
   return (
