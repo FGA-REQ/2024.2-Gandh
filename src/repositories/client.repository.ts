@@ -59,6 +59,7 @@ export class ClientRepository {
       await client.query(query, values);
 
     } catch (error) {
+      console.error('Erro ao atualizar cliente:', error);
       throw new Error('Erro ao atualizar o cliente no banco de dados');
     }
   }
