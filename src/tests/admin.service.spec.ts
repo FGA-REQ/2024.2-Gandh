@@ -70,16 +70,32 @@ describe('AdminService', () => {
   });
 
   describe('checkLogIn', () => {
+    it('deve lançar erro se email for null', async () => {
+      const credentials = { gmail: null as any, password: 'senha123' };
+
+      await expect(service.checkLogIn(credentials)).rejects.toThrow(BadRequestException);
+      await expect(service.checkLogIn(credentials)).rejects.toThrow('O campo do email deve ser preenchido!');
+    });
+
+    it('deve lançar erro se senha for null', async () => {
+      const credentials = { gmail: 'admin@teste.com', password: null as any };
+
+      await expect(service.checkLogIn(credentials)).rejects.toThrow(BadRequestException);
+      await expect(service.checkLogIn(credentials)).rejects.toThrow('O campo da senha deve ser preenchido!');
+    });
+
     it('deve lançar erro se email estiver vazio', async () => {
       const credentials = { gmail: '', password: 'senha123' };
       
-      await expect(service.checkLogIn(credentials)).rejects.toThrow(UnauthorizedException);
+      await expect(service.checkLogIn(credentials)).rejects.toThrow(BadRequestException);
+      await expect(service.checkLogIn(credentials)).rejects.toThrow('O campo do email deve ser preenchido!');
     });
 
     it('deve lançar erro se senha estiver vazia', async () => {
       const credentials = { gmail: 'admin@teste.com', password: '' };
       
-      await expect(service.checkLogIn(credentials)).rejects.toThrow(UnauthorizedException);
+      await expect(service.checkLogIn(credentials)).rejects.toThrow(BadRequestException);
+      await expect(service.checkLogIn(credentials)).rejects.toThrow('O campo da senha deve ser preenchido!');
     });
 
     it('deve lançar erro se administrador não existir', async () => {
