@@ -85,3 +85,7 @@ Quando forem feitas modificações no banco de dados, siga os seguintes passos:
 3. **Após isso, basta executar os comandos iniciais novamente para configurar o banco de dados localmente.**
 
 ---
+
+## Links Para os Vídeos:
+- Vídeo de Aprovação: [Clique Aqui](https://drive.google.com/drive/folders/1TN8k3kpEozY60VfdM_uhXcBDLNqG1Buq?usp=drive_link)
+- Vídeo com a Apresentação do MVP: [Clique Aqui](https://drive.google.com/drive/folders/1YMm6_XB3UPjxl2WdEkLyYIh14QZn3-oE?usp=drive_link)

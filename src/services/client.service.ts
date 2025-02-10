@@ -87,15 +87,16 @@ export class ClientService {
 
   async seeProfile(id: number): Promise<ClientProfileDTO> {
     const client = await this.clientRepository.findOneById(id);
+
+    if(!client) {
+      throw new NotFoundException('Cliente não encontrado');
+    }
+    
     const profileClient = new ClientProfileDTO(
                                 client.name, 
                                 client.gmail, 
                                 client.phone, 
                                 client.fidelity );
-
-    if(!client) {
-      throw new NotFoundException('Cliente não encontrado');
-    }
 
     return profileClient;
   }
