@@ -15,6 +15,8 @@ nav:
   - Atas de Reunião: 
       - 12/01: "atas-reuniao/atas.md"
       - 14/01: "atas-reuniao/ata2.md"
+      - 20/01: "atas-reuniao/ata3.md"
+      - 29/01: "atas-reuniao/ata4.md"
 
 theme:
   name: material
