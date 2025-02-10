@@ -15,26 +15,28 @@ export class AdminService {
     await this.adminRepository.create(admin);
   }
 
-  async checkLogIn(credentials: {gmail: string, password: string}) {
-    const admin = await this.adminRepository.findOneByEmail(credentials.gmail);
-
-    if(credentials.gmail == null) {
+  async checkLogIn(credentials: { gmail: string; password: string }) {
+    if (!credentials.gmail) {
       throw new BadRequestException('O campo do email deve ser preenchido!');
     }
-
-    if(credentials.password == null) {
+  
+    if (!credentials.password) {
       throw new BadRequestException('O campo da senha deve ser preenchido!');
     }
-
-    if(!admin) {
-      throw new UnauthorizedException('Usuário não encontrado! Verifique se o email está correto.');
+  
+    const admin = await this.adminRepository.findOneByEmail(credentials.gmail);
+  
+    if (!admin) {
+      throw new UnauthorizedException(
+        'Usuário não encontrado! Verifique se o email está correto.',
+      );
     }
-
+  
     const isPasswordValid = await bcrypt.compare(credentials.password, admin.password);
-    if(!isPasswordValid) {
-      throw new UnauthorizedException('Senha inválida!');
+    if (!isPasswordValid) {
+      throw new UnauthorizedException('Senha incorreta!');
     }
-
+  
     return admin;
-  }
+  }  
 }
