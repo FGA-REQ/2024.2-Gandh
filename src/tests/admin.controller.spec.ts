@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AdminController } from 'src/controllers/admin.controller';
 import { AdminService } from 'src/services/admin.service';
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { client } from '../../db/db';
+
 
 describe('AdminController', () => {
   let controller: AdminController;
@@ -26,6 +28,9 @@ describe('AdminController', () => {
     controller = module.get<AdminController>(AdminController);
     service = module.get<AdminService>(AdminService);
   });
+  afterAll(async () => {
+    await client.end();
+});
 
   it('deve ser definido', () => {
     expect(controller).toBeDefined();
