@@ -1,0 +1,83 @@
+body {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+.tela {
+    text-align: center;
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tela-header {
+    background-color: #000;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tela-logotipo {
+    height: 60px;
+}
+
+.footer-bar {
+    background-color: #D69958;
+    height: 2px;
+    width: 100%;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 55px;
+    justify-content: flex-end;
+}
+
+.icon-container {
+    background-color: #D69958;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 20px;
+}
+
+.back-icon {
+    position: absolute;
+    left: 20px;
+    top: calc(90px + 10px);
+}
+
+.cardapio-list {
+    margin-top: 30px;
+}
+
+.cardapio-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D69958;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 70%;
+    margin-left: 50px;
+}
+
+.cardapio-item span {
+    color: #000;
+}
+
+.delete-button {
+    background-color: red;
+    border-radius: 50%;
+}

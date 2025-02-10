@@ -1,0 +1,142 @@
+  .Web {
+    text-align: center;
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Web-logotipo {
+    height: 200px;
+    margin-left: 20px;
+  }
+
+  .logout {
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .admin-container {
+    margin: 100px auto;
+    background-color: #D69958;
+    border-radius: 20px;
+    padding: 20px;
+    width: 450px;
+    color: white;
+    justify-content: center;
+    margin-top: 200px;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+  
+  .admin-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .admin-options {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .admin-option {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 50px;
+    width: 100%;
+    max-width: 350px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s;
+    
+  }
+  
+  .admin-option:hover {
+    background-color: #D69958;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-bar {
+    background-color: #D69958;
+    height: 5px;
+    margin-top: 100px;
+    width: 100%;
+    position: absolute;
+  }
+  
+  /* Responsividade para tablets */
+@media (max-width: 768px) {
+  .admin-container {
+    width: 350px;
+  }
+
+  .admin-title {
+    font-size: 32px;
+  }
+
+  .admin-option {
+    padding: 10px 40px;
+  }
+
+  .Web-logotipo {
+    height: 150px;
+  }
+}
+
+/* Responsividade para smartphones */
+@media (max-width: 480px) {
+  .Web-header {
+    height: 70px;
+  }
+
+  .logout {
+    height: 40px;
+    cursor: pointer;
+    margin-left: 340px;
+  }
+
+  .Web-logotipo {
+    height: 120px;
+    margin-left: 10px;
+  }
+
+  .admin-container {
+    width: 85%;
+    margin: 50px auto;
+    padding: 15px;
+    margin: auto;
+    margin-top: 40%;
+  }
+
+  .admin-title {
+    font-size: 28px;
+  }
+
+  .admin-option {
+    padding: 10px 30px;
+  }
+
+  .footer-bar {
+    margin-top: 70px;
+  }
+}

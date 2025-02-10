@@ -1,0 +1,91 @@
+.fidelidade-container {
+    background-color: #000;
+    min-height: 100vh;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .fidelidade-header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+  }
+  
+  .fidelidade-header h1 {
+    color: #CD9B5E;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .hotdog-progress {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+  
+  .hotdog-icon {
+    font-size: 24px;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+  }
+  
+  .hotdog-icon.completed {
+    opacity: 1;
+    color: #ff0000;
+  }
+  
+  .pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .pedido-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+  }
+  
+  .pedido-icon {
+    font-size: 24px;
+    color: #CD9B5E;
+  }
+  
+  .pedido-info {
+    flex: 1;
+  }
+  
+  .pedido-info h3 {
+    margin: 0;
+    color: #CD9B5E;
+    font-size: 16px;
+  }
+  
+  .pedido-info p {
+    margin: 5px 0 0;
+    color: #888;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .hotdog-progress {
+      padding: 15px;
+      gap: 5px;
+    }
+  
+    .hotdog-icon {
+      font-size: 20px;
+    }
+  
+    .pedido-item {
+      padding: 12px;
+    }
+  }
+  
