@@ -1,4 +1,13 @@
+@font-face {
+  font-family: 'Xilosa';
+  src: url('../components/xilosa_.ttf') format('truetype');
+}
+body {
+  font-family: 'Xilosa', sans-serif;
+}
+
 .navbar8-container1 {
+  font-family: 'Xilosa', sans-serif;
   top: 0;
   width: 100%;
   display: flex;
@@ -9,6 +18,7 @@
 }
  
 .navbar8-navbar-interactive {
+  font-family: 'Xilosa', sans-serif;
   width: 100%;
   display: flex;
   z-index: 100;
@@ -28,6 +38,7 @@
  
 .navbar8-desktop-menu {
   flex: 1;
+  font-family: 'Xilosa', sans-serif;
   display: flex;
   justify-content: space-between;
 }
@@ -43,10 +54,12 @@
 }
  
 .navbar8-link11 {
+  font-family: 'Xilosa', sans-serif;
   text-decoration: none;
 }
  
 .navbar8-link31 {
+  font-family: 'Xilosa', sans-serif;
   text-decoration: none;
 }
  
@@ -173,6 +186,7 @@
 }
  
 .navbar8-links2 {
+  font-family: 'Xilosa', sans-serif;
   gap: var(--dl-space-space-unit);
   flex: 0 0 auto;
   width: 100%;

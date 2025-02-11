@@ -1,16 +1,55 @@
+@font-face {
+  font-family: 'Xilosa';
+  src: url('../components/xilosa_.ttf') format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Xilosa', sans-serif;
+}
+
+
+
 .home-container {
+ 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Xilosa', sans-serif;
+  }
+  
+  font-family: 'Xilosa', sans-serif;
   width: 100%;
   display: flex;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
 }
+
+
+
+
+
  
+@font-face {
+  font-family: 'Xilosa';
+  src: url('../components/xilosa_.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Xilosa', sans-serif;
+}
+
+
+
 .home-text100 {
+  h1, h2, h3, h4, h5, h6 {
+      font-family: 'Xilosa', sans-serif;
+  }
   display: inline-block;
 }
  
 .home-text101 {
+  h1, h2, h3, h4, h5, h6 {
+      font-family: 'Xilosa', sans-serif;
+  }
   display: inline-block;
 }
  

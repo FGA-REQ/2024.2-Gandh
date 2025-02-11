@@ -16,7 +16,10 @@ import './home.css'
 
 const Home = (props) => {
   return (
+
+    
     <div className="home-container">
+      
       <Helmet>
         <title>Paraíba HotDog</title>
         <meta property="og:title" content="Immediate Ripe Mandrill" />
@@ -69,6 +72,12 @@ const Home = (props) => {
         action3={
           <Fragment>
             <span className="home-text115">Sobre</span>
+          </Fragment>
+        }
+
+        action4={
+          <Fragment>
+            <span className="home-text115">Carrinho</span>
           </Fragment>
         }
         heading1={

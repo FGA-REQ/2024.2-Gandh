@@ -28,7 +28,7 @@
   }
   
   .hotdog-icon {
-    font-size: 24px;
+    font-size: 60px;
     opacity: 0.3;
     transition: opacity 0.3s;
   }
@@ -64,13 +64,13 @@
   
   .pedido-info h3 {
     margin: 0;
-    color: #CD9B5E;
+    color: #181410;
     font-size: 16px;
   }
   
   .pedido-info p {
     margin: 5px 0 0;
-    color: #888;
+    color: #303030;
     font-size: 14px;
   }
   

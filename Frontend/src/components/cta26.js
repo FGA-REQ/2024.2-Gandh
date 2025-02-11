@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import './cta26.css'
+import { Link } from 'react-router-dom'
 
 const CTA26 = (props) => {
   return (
@@ -40,7 +41,11 @@ const CTA26 = (props) => {
                   <span>
                     {props.action1 ?? (
                       <Fragment>
-                        <span className="cta26-text6">Order Now</span>
+
+                        <Link to="/menu" className="back-button">   
+                        <span className="cta26-text6">Peça agora! </span>
+                        </Link>
+
                       </Fragment>
                     )}
                   </span>

@@ -396,7 +396,7 @@ Navbar8.defaultProps = {
   link1: undefined,
   page4ImageSrc:
     'https://images.unsplash.com/photo-1584824486516-0555a07fc511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczODM3NTQ2Nnw&ixlib=rb-4.0.3&q=80&w=1080',
-  logoSrc: 'src/components/LogoParaiba.png',
+  logoSrc: logo,
   linkUrlPage3: 'https://www.teleporthq.io',
   page4: undefined,
   page2: undefined,

@@ -3,13 +3,20 @@
     min-height: 100vh;
     padding: 20px;
   }
-  
+  @font-face {
+    font-family: 'Xilosa';
+    src: url('../components/xilosa_.ttf') format('truetype');
+}
+
+
+
   .menu-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     margin-bottom: 30px;
+    background-color: #000;
   }
   
   .menu-logo {
@@ -18,6 +25,7 @@
   }
   
   .menu-nav {
+    font-family: 'Xilosa', sans-serif;
     display: flex;
     gap: 15px;
     overflow-x: auto;
