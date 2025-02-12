@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Fidelidade.css';
 import paraibavetor from './paraibavetor.svg';
+import Hero17 from '../components/hero17';
+import { Fragment } from 'react';
+
 
 const Fidelidade = () => {
   // Simulação de pedidos do usuário (3 pedidos feitos)
@@ -40,6 +43,52 @@ const Fidelidade = () => {
 
   return (
     <div className="fidelidade-container">
+
+
+             <Link to="/home" className="back-button">
+          <img src={paraibavetor} alt="Logo" className="menu-logo" />
+           </Link> 
+            <Hero17
+                            div
+                            action2={
+                                <Fragment>
+                                    <span className="home-text114">Fidelidade</span>
+                                </Fragment>
+                            }
+                            action1={
+                                <Fragment>
+                                    <span className="home-text115">Menu</span>
+                                </Fragment>
+                            }
+                            action3={
+                                <Fragment>
+                                    <span className="home-text115">Sobre</span>
+                                </Fragment>
+                            }
+                            action4={
+                                <Fragment>
+                                    <span className="home-text115">Carrinho</span>
+                                </Fragment>
+                            }
+                            heading1={
+                                <Fragment>
+                                    <span className="home-text116">
+                                        Paraíba HotDog
+                                    </span>
+                                </Fragment>
+                            }
+                            content1={
+                                <Fragment>
+                                    <span className="home-text117">
+                                        O cachorro quente mais arretado do centro-oeste
+                                    </span>
+                                </Fragment>
+                            }
+                        ></Hero17>
+
+
+
+
       <header className="fidelidade-header">
         <h1>Fidelidade</h1>
       </header>

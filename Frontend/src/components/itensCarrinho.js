@@ -2,6 +2,7 @@ import './itensCarrinho.css';
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import paraibavetor from './paraibavetor.svg';
+import { lanchescarrinho } from '../views/itensnocarrinho';
 
 function ItensCarrinho() {
   const history = useHistory();
