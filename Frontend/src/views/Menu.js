@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
 import paraibavetor from './paraibavetor.svg';
+import Cardapio from '../components/cardapio.js';
+import { useHistory } from "react-router-dom";
+import { menulanches } from './menulanches.js';
 
 const Menu = () => {
+
+  const history = useHistory();
   const [selectedCategory, setSelectedCategory] = useState('PROMOÇÕES');
   
   const categories = [
@@ -14,18 +19,15 @@ const Menu = () => {
     { id: 5, name: 'Combo' }
   ];
 
-  const menuItems = [
-    { id: 1, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 2, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 3, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 4, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 5, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 6, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 7, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 8, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 9, title: 'Title', price: 'Preço', image: 'placeholder.jpg' },
-    { id: 10, title: 'Title', price: 'Preço', image: 'placeholder.jpg' }
-  ];
+  
+
+  const handleClientClick = (lanche) => {
+    console.log(`Visualizando lanche: ${lanche.nome}`);
+    history.push(`/visualizarlanche/${lanche.id}`);
+    return lanche;
+  };
+
+
 
   return (
     <div className="menu-page">
@@ -47,16 +49,18 @@ const Menu = () => {
       </header>
 
       <main className="menu-grid-container">
-        <h2 className="section-title">{selectedCategory}</h2>
+        <h2 className="section-nome">{selectedCategory}</h2>
         <div className="menu-grid">
-          {menuItems.map(item => (
-            <div key={item.id} className="menu-item">
-              <div className="menu-item-image">
+          {menulanches.map(lanche => (
+            <div key={lanche.id} className="menu-lanche">
+              
+
+              <div className="menu-lanche-image">
                 <div className="placeholder-image"></div>
               </div>
-              <div className="menu-item-info">
-                <h3>{item.title}</h3>
-                <p>{item.price}</p>
+              <div className="menu-lanche-info">
+                <h3><span onClick={() => handleClientClick(lanche)}>{lanche.nome}</span></h3>
+                <p>{lanche.price}</p>
               </div>
             </div>
           ))}

@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react'
 
 import PropTypes from 'prop-types'
+import imgHotDog from './/hotdog5.jpeg'
 
 import './features25.css'
 
@@ -134,7 +135,7 @@ Features25.defaultProps = {
   feature3ImgAlt: 'Company Story Image',
   feature2Title: undefined,
   feature1Title: undefined,
-  feature1ImgSrc: 'https://play.teleporthq.io/static/svg/default-img.svg',
+  feature1ImgSrc: imgHotDog,
   feature3ImgSrc:
     'https://images.unsplash.com/photo-1509315811345-672d83ef2fbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczODM3NTQ2OXw&ixlib=rb-4.0.3&q=80&w=1080',
   feature2Description: undefined,

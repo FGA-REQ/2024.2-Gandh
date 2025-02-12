@@ -2,22 +2,16 @@ import './cardapio.css';
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import paraibavetor from './paraibavetor.svg';
+import { menulanches } from '../views/menulanches.js';
 
 function Cardapio() {
   const history = useHistory();
 
-  // Lista de itens simulados
-  const [cardapio] = useState([
-    { id_lanche: 1, nome: "lanche numero 1" },
-    { id_lanche: 2, nome: "lanche numero 2" },
-    { id_lanche: 3, nome: "lanche numero 3" },
-    { id_lanche: 4, nome: "lanche numero 4" },
-    { id_lanche: 5, nome: "lanche numero 5" },
-  ]);
 
   const handleClientClick = (lanche) => {
     console.log(`Visualizando lanche: ${lanche.nome}`);
-    history.push(`/visualizarlanche/${lanche.id_lanche}`);
+    history.push(`/visualizarlanche/${lanche.id}`);
+    return lanche;
   };
 
   const handleDelete = (lanche) => {
@@ -45,8 +39,8 @@ function Cardapio() {
       </div>
 
       <div className="client-list">
-        {cardapio.map((lanche) => (
-          <div className="client-item" key={lanche.id_lanche}>
+        {menulanches.map((lanche) => (
+          <div className="client-item" key={lanche.id}>
             <span onClick={() => handleClientClick(lanche)}>{lanche.nome}</span>
             <button className="delete-button" onClick={() => handleDelete(lanche)}>
                 <img src={require('../components/trash.svg').default} alt="Ícone de deletar" className="icon" />
