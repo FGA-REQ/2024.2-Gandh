@@ -16,10 +16,11 @@ import './home.css'
 
 const Home = (props) => {
   return (
+
+    
     <div className="home-container">
+      
       <Helmet>
-        <title>Paraíba HotDog</title>
-        <meta property="og:title" content="Immediate Ripe Mandrill" />
       </Helmet>
       <Navbar8
         page1Description={
@@ -71,6 +72,12 @@ const Home = (props) => {
             <span className="home-text115">Sobre</span>
           </Fragment>
         }
+
+        action4={
+          <Fragment>
+            <span className="home-text115">Carrinho</span>
+          </Fragment>
+        }
         heading1={
           <Fragment>
             <span className="home-text116">
@@ -90,38 +97,37 @@ const Home = (props) => {
         feature3Description={
           <Fragment>
             <span className="home-text118">
-              Explore a variety of dishes from different regions of the Nordeste
+              Explore uma variedade de pratos do Nordeste
             </span>
           </Fragment>
         }
         feature3Title={
           <Fragment>
-            <span className="home-text119">Regional Diversity</span>
+            <span className="home-text119">diversidade regional</span>
           </Fragment>
         }
         feature2Description={
           <Fragment>
             <span className="home-text120">
-              Easy and secure online ordering process
+              Peça agora
             </span>
           </Fragment>
         }
         feature1Title={
           <Fragment>
-            <span className="home-text121">Authentic Nordeste Flavors</span>
+            <span className="home-text121">Sabor autentico do Nordeste</span>
           </Fragment>
         }
         feature1Description={
           <Fragment>
             <span className="home-text122">
-              Savor the taste of traditional Nordeste dishes made with authentic
-              ingredients
+              Venha experimentar as delicias da paraíba
             </span>
           </Fragment>
         }
         feature2Title={
           <Fragment>
-            <span className="home-text123">Convenient Ordering</span>
+            <span className="home-text123">Super conveniente</span>
           </Fragment>
         }
       ></Features24>
@@ -411,60 +417,7 @@ const Home = (props) => {
           </Fragment>
         }
       ></Pricing14>
-      <Steps2
-        step1Description={
-          <Fragment>
-            <span className="home-text184">
-              Explore a variety of traditional dishes from the Nordeste region
-              that will tantalize your taste buds.
-            </span>
-          </Fragment>
-        }
-        step3Description={
-          <Fragment>
-            <span className="home-text185">
-              Learn more about our company&apos;s passion for bringing authentic
-              Nordeste flavors to your doorstep.
-            </span>
-          </Fragment>
-        }
-        step2Title={
-          <Fragment>
-            <span className="home-text186">Easy Ordering Process</span>
-          </Fragment>
-        }
-        step2Description={
-          <Fragment>
-            <span className="home-text187">
-              Simply browse through our menu, select your favorite dishes, and
-              proceed to checkout with just a few clicks.
-            </span>
-          </Fragment>
-        }
-        step1Title={
-          <Fragment>
-            <span className="home-text188">Discover Our Nordeste Cuisine</span>
-          </Fragment>
-        }
-        step3Title={
-          <Fragment>
-            <span className="home-text189">About Us</span>
-          </Fragment>
-        }
-        step4Description={
-          <Fragment>
-            <span className="home-text190">
-              Have any questions or feedback? Feel free to reach out to our
-              friendly team for assistance.
-            </span>
-          </Fragment>
-        }
-        step4Title={
-          <Fragment>
-            <span className="home-text191">Contact Us</span>
-          </Fragment>
-        }
-      ></Steps2>
+
       <Testimonial17
         author2Position={
           <Fragment>
@@ -564,7 +517,7 @@ const Home = (props) => {
         location1Description={
           <Fragment>
             <span className="home-text207">
-              oi
+              Aguas claras
             </span>
           </Fragment>
         }
@@ -576,7 +529,7 @@ const Home = (props) => {
         location2Description={
           <Fragment>
             <span className="home-text209">
-            ola
+            Araucárias
             </span>
           </Fragment>
         }

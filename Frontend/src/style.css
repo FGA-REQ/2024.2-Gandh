@@ -38,6 +38,8 @@ body {
 }
  
 .button {
+
+  font-family: 'Xilosa', sans-serif;
   color: var(--dl-color-theme-neutral-dark);
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -385,6 +387,8 @@ body {
 }
  
 .thq-link {
+
+  font-family: 'Xilosa', sans-serif;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;

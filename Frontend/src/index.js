@@ -19,6 +19,8 @@ import Admin from './components/admin'
 import Clientes from './components/clientes'
 import Cardapio from './components/cardapio'
 import Pedido from './components/pedido'
+import Carrinho from './views/Carrinho'
+import Item from './views/Item'
 
 const isAuthenticated = () => {
   return localStorage.getItem('isLoggedIn') === 'true';
@@ -58,6 +60,14 @@ const App = () => {
         <Route path="/register" component={Register} />
         <Route path="/menu" component={Menu} />
         <Route path="/fidelidade" component={Fidelidade} />
+        <Route path="/carrinho" component={Carrinho} />
+        <Route path="/visualizarlanche/:id" component={Item} />
+
+
+
+        
+
+      
         <Route 
           path="/home" 
           render={() => (

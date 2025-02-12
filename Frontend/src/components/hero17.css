@@ -1,4 +1,11 @@
+@font-face {
+  font-family: 'Xilosa';
+  src: url('../components/xilosa_.ttf') format('truetype');
+}
+
+
 .hero17-header78 {
+  font-family: 'Xilosa', sans-serif;
   gap: var(--dl-space-space-threeunits);
   width: 100%;
   height: auto;
@@ -20,6 +27,7 @@
 }
  
 .hero17-content1 {
+  font-family: 'Xilosa', sans-serif;
   gap: var(--dl-space-space-oneandhalfunits);
   display: flex;
   align-self: stretch;
@@ -28,6 +36,8 @@
 }
  
 .hero17-text1 {
+
+  font-family: 'Xilosa', sans-serif;
   text-align: center;
 }
  
@@ -36,6 +46,7 @@
 }
  
 .hero17-actions {
+  font-family: 'Xilosa', sans-serif;
   gap: 400px;
   display: flex;
   align-items: flex-start;
@@ -209,11 +220,15 @@
   .hero17-actions {
     width: 100%;
     flex-direction: column;
+
+  font-family: 'Xilosa', sans-serif;
   }
   .hero17-button1 {
+    font-family: 'Xilosa', sans-serif;
     width: 100%;
   }
   .hero17-button2 {
+    font-family: 'Xilosa', sans-serif;
     width: 100%;
   }
 }
