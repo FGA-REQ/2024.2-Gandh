@@ -15,6 +15,7 @@ nav:
   - Atas de Reunião: 
       - 12/01: "atas-reuniao/atas.md"
       - 14/01: "atas-reuniao/ata2.md"
+  - Protótipo: "Protótipo/prototipo.md"
 
 theme:
   name: material
